@@ -1,4 +1,4 @@
-const baseUrl = 'https://auth.nomoreparties.co.';
+const baseUrl = 'https://easystyle.nomoredomains.monster';
 
 function handleResponse (res) {
   if (res.ok) {
