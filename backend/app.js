@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require ('cors');
 require('dotenv').config();
 const { errors } = require('celebrate');
 const router = require('./routes');
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 // автотесты не дают записать тут записать из env, на локальной машине работает
 
+app.use(cors());
 app.use(requestLogger);
 app.use(router);
 app.use(errorLogger);
