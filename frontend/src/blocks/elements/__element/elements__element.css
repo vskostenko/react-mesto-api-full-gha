@@ -1,0 +1,10 @@
+.elements__element {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 282px;
+}
+.elements__element:hover {
+    cursor: pointer;
+}

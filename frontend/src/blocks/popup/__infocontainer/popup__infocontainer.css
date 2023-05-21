@@ -1,0 +1,6 @@
+.popup__infocontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px auto 60px;
+}
