@@ -86,7 +86,7 @@ class Api {
     }
 }
 const apiConfig = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-54/',
+  baseUrl: 'https://easystyle.nomoredomains.monster/',
   headers: {
     authorization: '894ca0c1-f322-46d5-9613-0b5b161eddf9',
     'Content-Type': 'application/json'
