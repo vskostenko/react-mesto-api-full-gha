@@ -88,8 +88,8 @@ class Api {
 const apiConfig = {
   baseUrl: 'https://easystyle.nomoredomains.monster/',
   headers: {
-    authorization: '894ca0c1-f322-46d5-9613-0b5b161eddf9',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Origin': 'http://cozystyle.nomoredomains.monster/',
   }
 }
 const api = new Api(apiConfig); 
