@@ -13,7 +13,18 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 // автотесты не дают записать тут записать из env, на локальной машине работает
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://cozystyle.nomoredomains.monster',
+    'https://cozystyle.nomoredomains.monster/',
+    'http://localhost:3000',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+}));
 app.use(requestLogger);
 app.use(router);
 app.use(errorLogger);
