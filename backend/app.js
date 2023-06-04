@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 const { errors } = require('celebrate');
 const router = require('./routes');
@@ -20,20 +21,15 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 // автотесты не дают записать тут записать из env, на локальной машине работает
 
+app.use(cors());
+
 app.use((req, res, next) => {
-  const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
-  const requestHeaders = req.headers['access-control-request-headers']; 
-  if (method === 'OPTIONS') {
-    // разрешаем кросс-доменные запросы с этими заголовками
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    // завершаем обработку запроса и возвращаем результат клиенту
-    return res.end();
-  }
-  const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
-  // проверяем, что источник запроса есть среди разрешённых
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 app.use(requestLogger);
