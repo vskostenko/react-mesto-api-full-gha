@@ -91,7 +91,7 @@ const apiConfig = {
   baseUrl: 'https://easystyle.nomoredomains.monster/',
   headers: {
     'Content-Type': 'application/json',
-    'Origin': 'http://cozystyle.nomoredomains.monster/',
+    'Origin': 'https://cozystyle.nomoredomains.monster',
   }
 }
 const api = new Api(apiConfig); 
