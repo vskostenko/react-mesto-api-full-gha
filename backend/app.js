@@ -23,7 +23,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 app.use(
   cors({
-    origin: allowedCors,
+    origin: [
+      'http://localhost:3000',
+      'http://cozystyle.nomoredomains.monster',
+      'https://cozystyle.nomoredomains.monster',
+    ],
     credentials: true,
     maxAge: 60,
   }),
