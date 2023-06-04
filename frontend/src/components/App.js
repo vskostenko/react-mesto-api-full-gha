@@ -47,7 +47,8 @@ function App() {
   }, [loggedIn]);
   useEffect(() => {
     checkToken()
-      .then(() => {
+      .then((data) => {
+          console.log(data);
           setLoggedIn(true);
           navigate("/", { replace: true });
       })
