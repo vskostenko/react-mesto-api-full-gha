@@ -29,6 +29,7 @@ export function singIn (password,email) {
 
 }
 export function checkToken () {
+  console.log(localStorage.getItem("token"));
   return fetch(`${baseUrl}/users/me`, {
     headers: {
       "Content-Type": "application/json",
