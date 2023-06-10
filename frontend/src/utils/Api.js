@@ -22,6 +22,7 @@ class Api {
               method: 'GET',
               headers: this._headers,
               credentials: "include",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             })
             .then(res => this._handleResponse(res))
         }
@@ -91,7 +92,7 @@ const apiConfig = {
   baseUrl: 'https://easystyle.nomoredomains.monster',
   headers: {
     'Content-Type': 'application/json',
-    'Origin': 'https://cozystyle.nomoredomains.monster',
+    'Origin': 'http://127.0.0.1:3000',
   }
 }
 const api = new Api(apiConfig); 

@@ -33,6 +33,20 @@ function App() {
   const [infoMessage, setInfoMessage] = useState('');
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    checkToken(token)
+      .then((data) => {
+          console.log(data);
+          setLoggedIn(true);
+          navigate("/", { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
     if (loggedIn) {
     Promise.all([
       api.getUserInfo(),
@@ -45,17 +59,7 @@ function App() {
       .catch(err => console.error(err));
     }
   }, [loggedIn]);
-  useEffect(() => {
-    checkToken()
-      .then((data) => {
-          console.log(data);
-          setLoggedIn(true);
-          navigate("/", { replace: true });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+
   const navigate = useNavigate();
   function handleEditProfileClick () {
     setProfilePopupOpen(true);
