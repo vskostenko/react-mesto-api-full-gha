@@ -93,6 +93,7 @@ const apiConfig = {
   headers: {
     'Content-Type': 'application/json',
     'Origin': 'http://127.0.0.1:3000',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
   }
 }
 const api = new Api(apiConfig); 
