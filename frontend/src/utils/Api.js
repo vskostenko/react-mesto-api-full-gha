@@ -35,7 +35,10 @@ class Api {
     editProfile (data) {
         return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
-        headers: this._headers,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: JSON.stringify(data)
         })
         .then(res => this._handleResponse(res))     
@@ -44,7 +47,10 @@ class Api {
     addCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
           method: 'POST',
-          headers: this._headers,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          },
           body: JSON.stringify({
             name: data.name,
             link: data.link
@@ -56,7 +62,10 @@ class Api {
     delCard(cardId){
       return fetch(`${this._baseUrl}/cards/${cardId}/`, {
         method: 'DELETE',
-        headers: this._headers
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         })
         .then(res => this._handleResponse(res))
     }
@@ -64,14 +73,22 @@ class Api {
     addCardLike(cardId){
       return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
         method: "PUT",
-        headers: this._headers})
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+      })
         .then(res => this._handleResponse(res))
     }
 
     delCardLike(cardId){
       return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
         method: "DELETE",
-        headers: this._headers})
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+      })
         .then(res => this._handleResponse(res))
     }
     
@@ -87,7 +104,10 @@ class Api {
     updateAvatar(data){
        return fetch(`${this._baseUrl}users/me/avatar`, {
         method: "PATCH",
-        headers: this._headers,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: JSON.stringify(data)
         })
         .then(res => this._handleResponse(res))
