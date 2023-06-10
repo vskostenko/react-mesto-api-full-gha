@@ -12,7 +12,10 @@ class Api {
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'GET',
-            headers: this._headers,
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
             credentials: "include",
           })
           .then(res => this._handleResponse(res))
@@ -20,9 +23,11 @@ class Api {
     getUserInfo() {
             return fetch(`${this._baseUrl}/users/me`, {
               method: 'GET',
-              headers: this._headers,
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+              },
               credentials: "include",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
             })
             .then(res => this._handleResponse(res))
         }
@@ -89,12 +94,7 @@ class Api {
     }
 }
 const apiConfig = {
-  baseUrl: 'https://easystyle.nomoredomains.monster',
-  headers: {
-    'Content-Type': 'application/json',
-    'Origin': 'http://127.0.0.1:3000',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
-  }
+  baseUrl: 'https://easystyle.nomoredomains.monster'
 }
 const api = new Api(apiConfig); 
 export default api;
