@@ -71,7 +71,7 @@ class Api {
     }
 
     addCardLike(cardId){
-      return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
+      return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ class Api {
     }
 
     delCardLike(cardId){
-      return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
+      return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json',
