@@ -7,6 +7,8 @@ function Card (props) {
 
   // Определяем, являемся ли мы владельцем текущей карточки
   const isOwn = props.card.owner._id === currentUser._id;
+  console.log(props.card.owner._id, currentUser._id);
+  
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
   const isLiked = props.card.likes.some(i => i._id === currentUser._id);
   console.log(isLiked);
