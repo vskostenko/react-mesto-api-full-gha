@@ -5,14 +5,6 @@ require('dotenv').config();
 const { errors } = require('celebrate');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// Массив доменов, с которых разрешены кросс-доменные запросы
-const allowedCors = [
-  'http://cozystyle.nomoredomains.monster',
-  'https://cozystyle.nomoredomains.monster/',
-  'http://easystyle.nomoredomains.monster',
-  'https://easystyle.nomoredomains.monster/',
-  'http://localhost:3000',
-];
 
 const app = express();
 app.use(express.json());
