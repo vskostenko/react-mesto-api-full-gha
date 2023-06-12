@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Footer from './Footer.js';
 import Header from './Header.js';
 import Main from './Main.js';
@@ -34,7 +34,6 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     checkToken(token)
       .then((data) => {
           console.log(data);
@@ -88,10 +87,8 @@ function App() {
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i === currentUser._id);
-    console.log('Лайк', isLiked);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
-      console.log(newCard);
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     }).catch(err => console.error(err));
   } 

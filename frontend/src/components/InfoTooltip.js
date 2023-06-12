@@ -8,7 +8,7 @@ function InfoTooltip(props) {
             <div className="popup__container">
                 <div className="popup__infocontainer">
                 <button type="button" className="popup__close-button" onClick={props.onClose}></button>
-                <img className="popup__icon" src={props.isRegistered ? yes : no} />
+                <img className="popup__icon" src={props.isRegistered ? yes : no} alt="yes or no" />
                 <h2 className="popup__caption">{props.infoMessage}</h2>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
 
 function Register (props) {
-    const navigate = useNavigate();
+
     const [formValue, setFormValue] = useState({});
     const handleChange = (e) => {
         const { name, value } = e.target;

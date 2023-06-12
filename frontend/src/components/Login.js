@@ -4,7 +4,6 @@ import { useState } from "react";
 
 function Login (props) {
 
-    const navigate = useNavigate();
     const [formValue, setFormValue] = useState({});
     const handleChange = (e) => {
         const { name, value } = e.target;
