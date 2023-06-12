@@ -35,8 +35,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     checkToken(token)
-      .then((data) => {
-          console.log(data);
+      .then(() => {
           setLoggedIn(true);
           navigate("/", { replace: true });
       })
