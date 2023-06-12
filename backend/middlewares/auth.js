@@ -11,7 +11,8 @@ const auth = (req, res, next) => {
   const token = authorization.replace('Bearer ', '');
   let payload;
   try {
-    payload = jwt.verify(token, process.env.SECRET_KEY);
+    const { NODE_ENV, SECRET_KEY } = process.env;
+    payload = jwt.verify(token, NODE_ENV === 'production' ? SECRET_KEY : 'dev-secret');
   } catch (err) {
     return res
       .status(401)
