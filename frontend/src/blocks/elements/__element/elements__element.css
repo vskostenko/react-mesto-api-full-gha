@@ -4,7 +4,6 @@
     border-radius: 10px;
     background-color: #fff;
     width: 282px;
-    max-height: 361px;
 }
 .elements__element:hover {
     cursor: pointer;
