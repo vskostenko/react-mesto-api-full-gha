@@ -9,6 +9,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const { PORT = 3000 } = process.env;
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 // автотесты не дают записать тут записать из env, на локальной машине работает
@@ -51,6 +52,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`App listening on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });
