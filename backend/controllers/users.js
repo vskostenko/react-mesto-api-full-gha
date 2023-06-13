@@ -51,8 +51,6 @@ const getUserByid = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Пользователь по указанному _id не найден. Некорректный id'));
-      } else if (err.name === 'NotFound') {
-        next(new NotFoundError('Пользователь по указанному _id не найден'));
       } else {
         next(err);
       }
@@ -125,12 +123,7 @@ const login = (req, res, next) => {
 const getMyProfile = (req, res, next) => {
   const userId = req.user._id;
   User.findById(userId)
-    .orFail(() => {
-      const error = new Error('Пользователь с таким id не найден. Несуществующий id.');
-      error.statusCode = http2.constants.HTTP_STATUS_NOT_FOUND;
-      error.name = 'NotFound';
-      throw error;
-    })
+    .orFail(() => new NotFoundError('Пользователь с указанным id не существует'))
     .then((user) => res.send({
       _id: user._id,
       name: user.name,
