@@ -8,7 +8,6 @@ const {
 } = require('../middlewares/requestvalidator');
 
 usersRouter.get('/', getUsers);
-usersRouter.post('/', createUser);
 usersRouter.get('/me', getMyProfile);
 usersRouter.get('/:id', validateGetUserById(), getUserByid);
 usersRouter.patch('/me', validateUpdateProfile(), updateProfile);
