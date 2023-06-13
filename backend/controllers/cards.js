@@ -7,10 +7,10 @@ const ForbiddenError = require('../errors/forbidden');
 const createCard = (req, res, next) => {
   const userId = req.user._id;
   const {
-    name, link, likes, createdAt,
+    name, link,
   } = req.body;
   Card.create({
-    name, link, owner: userId, likes, createdAt,
+    name, link, owner: userId,
   })
     .then((newCard) => {
       res.status(http2.constants.HTTP_STATUS_CREATED).send(newCard);
