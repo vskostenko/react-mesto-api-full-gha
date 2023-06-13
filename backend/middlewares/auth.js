@@ -1,12 +1,11 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const AnauthorizedError = require('../errors/anauthorized');
 
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    return res
-      .status(401)
-      .send({ message: 'Необходима авторизация' });
+    throw new AnauthorizedError('Необходима авторизация');
   }
   const token = authorization.replace('Bearer ', '');
   let payload;
@@ -14,9 +13,7 @@ const auth = (req, res, next) => {
     const { NODE_ENV, SECRET_KEY } = process.env;
     payload = jwt.verify(token, NODE_ENV === 'production' ? SECRET_KEY : 'dev-secret');
   } catch (err) {
-    return res
-      .status(401)
-      .send({ message: 'Необходима авторизация' });
+    throw new AnauthorizedError('Необходима авторизация');
   }
   req.user = payload; // записываем пейлоуд в объект запроса
   return next(); // пропускаем запрос дальше
